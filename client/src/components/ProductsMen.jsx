@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/CartSlice";
 
 const Men = () => {
   const [productsData, setProductsData] = useState([]);
@@ -16,22 +18,14 @@ const Men = () => {
     getProducts();
   }, []);
 
+  const dispatch = useDispatch();
+
   return (
     <>
-      <div className="w-full bg-black pt-6">
-        <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16 bg-black">
+      <div className="w-full pt-6">
+        <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
           <div className="border-b mb-5 flex justify-between text-sm">
             <div className="text-indigo-600 flex items-center pb-2 pr-2 border-b-0 border-indigo-600 uppercase">
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-                classNameName="w-[20px] h-[20px] p-0.5"
-              >
-                <path
-                  fill="#161717"
-                  d="M160 0a48 48 0 1 1 0 96 48 48 0 1 1 0-96zM88 384H70.2c-10.9 0-18.6-10.7-15.2-21.1L93.3 248.1 59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l53.6-89.2c20.3-33.7 56.7-54.3 96-54.3h11.6c39.3 0 75.7 20.6 96 54.3l53.6 89.2c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9l-33.9-56.3L265 362.9c3.5 10.4-4.3 21.1-15.2 21.1H232v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V384H152v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V384z"
-                />
-              </svg> */}
               <button
                 className="font-semibold inline-block"
                 onClick={getProducts}
@@ -47,7 +41,7 @@ const Men = () => {
             {productsData.map((product, id) => (
               <div
                 key={id}
-                className="rounded overflow-hidden shadow-lg flex flex-col w-[360px] h-[500px] bg-gray-800"
+                className="rounded overflow-hidden shadow-lg flex flex-col w-[330px] h-[500px] bg-gray-300"
               >
                 <Link href="#"></Link>
                 <div className="relative">
@@ -57,7 +51,6 @@ const Men = () => {
                       src={product.ProductImage}
                       alt="Sunset in the mountains"
                     />
-                    <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                   </Link>
                   <Link href="#!">
                     <div className="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
@@ -77,7 +70,22 @@ const Men = () => {
                   </p>
                 </div>
                 <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                  <button className=" text-gray-800 border border-gray-900 p-1 text-sm px-2 rounded font-semibold -mt-1 -ml-3">
+                  <button
+                    onClick={() =>
+                      dispatch(
+                        addToCart({
+                          productImg: product.ProductImage,
+                          productId: product.ProductId,
+                          productName: product.ProductName,
+                          productDes: product.ProductDescriptions,
+                          productP:
+                            product.ProductPrice -
+                            (20 * product.ProductPrice) / 100,
+                        })
+                      )
+                    }
+                    className=" text-gray-800 border border-gray-900 p-1 text-sm px-2 rounded font-semibold -mt-1 -ml-3"
+                  >
                     Add to Cart →
                   </button>
 

@@ -13,15 +13,17 @@ export default function Brands() {
   const images = [b1, b2, b3, b4, b6, b7];
   return (
     <>
-      <div className="mx-auto py-12 h-[29vh] w-full bg-black z-30 border-0">
-        <p className="text-gray-300 border-0 -mt-7 font-serif text-3xl text-center border-b-2 w-fit flex items-center justify-center m-auto mb-8">Our Brands</p>
+      <div className="mx-auto py-12 h-[29vh] w-full z-30 border-0">
+        <p className="text-gray-300 border-0 -mt-7 font-serif text-3xl text-center border-b-2 w-fit flex items-center justify-center m-auto mb-8">
+          Our Brands
+        </p>
         <div className="flex items-center justify-evenly">
           {images.map((e, i) => (
             <img
               key={i}
               src={e}
               alt="x"
-              className="border-0 border-black h-[150px] invert"
+              className="border-0 border-black h-[150px]"
             />
           ))}
         </div>

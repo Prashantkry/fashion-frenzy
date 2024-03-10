@@ -58,12 +58,12 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-black h-[30vh] border-0 flex flex-col items-center justify-center">
-        <div className="w-[0.1vw] h-[6vh] bg-gray-300 my-10" />
-        <p className=" text-gray-300 text-sm tracking-wide">
+      <div className="bg-gray-200 h-[30vh] border-0 flex flex-col items-center justify-center">
+        <div className="w-[0.1vw] h-[6vh] bg-gray-700 my-10" />
+        <p className=" text-gray-600 text-sm tracking-wide">
           ALYSUM IS A PREMIUM ECOMMERCE THEME.
         </p>
-        <p className=" text-gray-300 mt-4 text-sm tracking-wide">
+        <p className=" text-gray-600 mt-4 text-sm tracking-wide">
           Quisque euismod pretium lacinia. Vivamus sollicitudin placerat sit
           amet sagittis. Mauris ac ante porta, pellentesque lacus
         </p>
@@ -73,9 +73,10 @@ const Home = () => {
 
       {/* <Newsletter/> */}
       {/* offer grid start */}
-      <div className="h-[60vh] w-full grid grid-cols-3 gap-6 py-10 px-6 bg-black border-0 pl-[9.5vw] items-center justify-center">
-        <div className="w-[29vw] h-[50vh] relative">
-          <img src={bc1} alt="x" className="object-cover opacity-75 h-full" />
+      <p>What we Offer</p>
+      <div className="h-[60vh] w-[95vw] grid grid-cols-3 gap-6 py-10 px-6 border-0 pl-[9.5vw] items-center justify-center">
+        <div className="w-[27.5vw] h-[50vh] relative">
+          <img src={bc1} alt="x" className="object-cover rounded shadow-md h-full" />
           <div className="h-full w-full absolute flex flex-col item-center justify-center p-8 text-gray-300 -mt-[50vh]">
             <span className="uppercase text-lg font-thin">Exclusive</span>
             <span className="lowercase text-6xl font-thin">Discounts</span>
@@ -85,8 +86,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="w-[29vw] h-[50vh] relative">
-          <img src={bc5} alt="x" className="object-cover opacity-75 h-full" />
+        <div className="w-[27.5vw] h-[50vh] relative">
+          <img src={bc5} alt="x" className="object-cover rounded shadow-md h-full" />
           <p className="h-full w-full absolute flex flex-col item-center justify-center p-8 text-gray-300 -mt-[50vh]">
             <span className="uppercase text-lg font-thin">shop now </span>
             <span className="lowercase text-6xl font-thin">hottest news</span>
@@ -94,16 +95,16 @@ const Home = () => {
           </p>
         </div>
         <div className="w-fit h-[50vh]">
-          <div className="h-[23vh] mt-0 relative">
-            <img src={bc3} alt="x" className="object-cover opacity-75 h-full" />
+          <div className="h-[23vh] mb-[2.5vh] relative">
+            <img src={bc3} alt="x" className="object-cover rounded shadow-md w-[95%] h-[24.3vh]" />
             <p className="h-full w-full absolute flex flex-col item-center justify-center p-5 -mt-[20vh] text-gray-300">
               <span className="uppercase text-sm font-thin">see the great</span>
               <span className="lowercase text-5xl font-thin">attention to</span>
               <span className="uppercase text-5xl font-bold">details</span>
             </p>
           </div>
-          <div className="h-[23vh] mt-8 relative">
-            <img src={bc2} alt="x" className="object-cover opacity-75 h-full" />
+          <div className="h-[23vh] relative">
+            <img src={bc2} alt="x" className="object-cover rounded shadow-md w-[95%] h-[24.3vh]" />
             <p className="h-full w-full absolute flex flex-col item-center justify-center p-4 -mt-[20vh] text-gray-300">
               <span className="uppercase text-sm font-thin">discover </span>
               <span className="lowercase text-5xl font-thin">style that</span>
@@ -118,7 +119,6 @@ const Home = () => {
       <Brands />
       <Testimonial />
       {/* testimonial end */}
-
 
       {/* <ProductsWoMen /> */}
     </>

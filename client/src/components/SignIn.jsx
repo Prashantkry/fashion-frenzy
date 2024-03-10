@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const APIUrl = "http://localhost:8000/api/v1";
 
@@ -52,12 +53,13 @@ export default function SignIn() {
     try {
       const response = await fetch(
         "http://localhost:8000/auth/google",
-        { mode: "no-cors" },
+        // { mode: "no-cors" },
         {
           method: "get",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: 'include',
         }
       );
       const data = await response.json();
@@ -67,6 +69,25 @@ export default function SignIn() {
       console.error("Error logging in with Google:", error);
     }
   }
+
+
+  // google signIn
+  // async function googleLogin() {
+  //   try {
+  //     const response = await axios.get("http://localhost:8000/auth/google", {
+  //       method: "get",
+  //       headers: {
+  //         "Content-Type": "text/plain",
+  //       },
+  //       withCredentials: true, // Send cookies along with the request
+  //     });
+  //     const data = response.data;
+  //     console.log(data);
+  //     window.location.href = data.url;
+  //   } catch (error) {
+  //     console.error("Error logging in with Google:", error);
+  //   }
+  // }
 
   const [showpass, setShowPass] = useState(false);
   return (

@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json({ limit: "10mb" }));
 
 // implementing cors start
-app.options("*", cors());
+// app.options("*", cors());
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -75,7 +75,6 @@ function checkLoggedIn(req, res, next) {
   }
   next();
 }
-
 // routing of all endpoints start
 app.get(
   "/auth/google",
@@ -86,7 +85,7 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/failure",
+    failureRedirect: "https/www.google.com",
     successRedirect: "/",
     session: true,
   }),

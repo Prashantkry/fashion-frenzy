@@ -12,7 +12,7 @@ import { bc3 } from "./Images";
 export default function Testimonial() {
   return (
     <>
-      <div className="mx-auto py-12 bg-black">
+      <div className="mx-auto py-12">
         <div className="flex items-center justify-center px-4 mb-3 md:mb-5">
           <h1 className="md:text-4xl text-gray-300 text-2xl font-bold font-serif">
             Testimonial
