@@ -27,9 +27,11 @@ export default function SignIn() {
         }),
       });
       const receivedData = await data.json();
-      // console.log(receivedData);
+      console.log(receivedData);
       const UserId = receivedData.UserId;
+      const Role = receivedData.Role;
       localStorage.setItem("UserId", UserId);
+      localStorage.setItem("Role", Role);
 
       if (receivedData.message === "LoginS") {
         toast.success("Login Successful");
@@ -93,13 +95,13 @@ export default function SignIn() {
   return (
     <>
       <ToastContainer />
-      <div className="bg-gray-900 h-[85vh] ">
+      <div className="bg-gray-50 h-[85vh] ">
         <div className="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center signIn">
           {/* login form start */}
-          <div className="bg-gray-800 shadow-lg rounded mt-10 xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+          <div className="bg-gray-100 shadow-lg rounded mt-10 xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
             <p
               tabIndex={0}
-              className="focus:outline-none text-2xl tracking-wider font-bold leading-6 text-gray-100"
+              className="focus:outline-none text-2xl tracking-wider font-bold leading-6 text-gray-900"
             >
               Login to your account
             </p>
@@ -119,7 +121,7 @@ export default function SignIn() {
             <button
               aria-label="Continue with google"
               role="button"
-              className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100 hover:text-gray-800 text-gray-100"
+              className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100 hover:text-gray-800 text-gray-900"
               onClick={googleLogin}
             >
               <svg
@@ -161,7 +163,7 @@ export default function SignIn() {
             <div>
               <label
                 htmlFor="email"
-                className="text-sm font-medium leading-none text-gray-300"
+                className="text-sm font-medium leading-none text-gray-800"
               >
                 Email
               </label>
@@ -176,7 +178,7 @@ export default function SignIn() {
             <div className="mt-6 w-full">
               <label
                 htmlFor="pass"
-                className="text-sm font-medium leading-none text-gray-300"
+                className="text-sm font-medium leading-none text-gray-800"
               >
                 Password
               </label>

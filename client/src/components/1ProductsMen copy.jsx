@@ -1,46 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/CartSlice";
 import { ToastContainer, toast } from "react-toastify";
 
-const APIUrl = "http://localhost:8000/api/v1";
 const Men = () => {
   const [productsData, setProductsData] = useState([]);
+  const APIUrl = "http://localhost:8000/api/v1";
 
   async function getProducts() {
     const productsJSON = await fetch(`${APIUrl}/product`);
     let productsRes = await productsJSON.json();
     setProductsData(productsRes.allProducts);
-    console.log(productsRes.allProducts);
+    // console.log(productsRes);
   }
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  const UserId = localStorage.getItem("UserId");
-  // console.log(UserId);
-
-  // send checkout data to backend
-  const addToCart = async (product) => {
-    console.log("api triggered");
-    try {
-      const data = await fetch(`${APIUrl}/checkout`, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          UserId,
-          productProperties: [product],
-        }),
-      });
-      const res = await data.json();
-      console.log(res);
-      toast.success("Added to Cart");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -60,7 +39,8 @@ const Men = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-            {productsData.slice(0, 3).map((product, id) => (
+            {/* <!-- CARD 1 --> */}
+            {productsData.map((product, id) => (
               <div
                 key={id}
                 className="rounded overflow-hidden shadow-lg flex flex-col w-[330px] h-[500px] bg-gray-300"
@@ -69,7 +49,7 @@ const Men = () => {
                 <div className="relative">
                   <Link href="#">
                     <img
-                      className="w-full h-[350px] p-3 px-7"
+                      className="w-full h-[300px] p-3 px-7"
                       src={product.ProductImage}
                       alt="Sunset in the mountains"
                     />
@@ -83,30 +63,49 @@ const Men = () => {
                 <div className="px-6 py-4 mb-auto">
                   <Link
                     to="/"
-                    className="font-medium text-sm h-[2vh] inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 overflow-scroll no-scrollbar"
+                    className="font-medium text-sm h-[4vh] inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 overflow-scroll no-scrollbar"
                   >
                     {product.ProductName}
                   </Link>
-                  <p className="text-gray-500 text-sm h-[4.2vh] border-0 overflow-scroll no-scrollbar">
+                  <p className="text-gray-500 text-sm h-[8vh] border-0 overflow-scroll no-scrollbar">
                     {product.ProductDescriptions.slice(0, 105)}
                   </p>
                 </div>
                 <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
                   <button
-                    onClick={() => addToCart(product)}
+                    onClick={() => {
+                      dispatch(
+                        addToCart({
+                          productImg: product.ProductImage,
+                          productId: product.ProductId,
+                          productName: product.ProductName,
+                          productDes: product.ProductDescriptions,
+                          productP:
+                            product.ProductPrice -
+                            (20 * product.ProductPrice) / 100,
+                        })
+                      );
+                      toast.success("Added to Cart");
+                    }}
                     className=" text-gray-800 border border-gray-900 p-1 text-sm px-2 rounded font-semibold -mt-1 -ml-3"
                   >
                     Add to Cart →
                   </button>
 
                   <div className="flex items-center justify-center">
-                    <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                    <span
+                      // href="#"
+                      className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center"
+                    >
                       <span className="ml-1 line-through text-gray-600 font-semibold text-xs mt-1">
                         ₹ {product.ProductPrice}
                       </span>
                     </span>
 
-                    <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                    <span
+                      // href="#"
+                      className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center"
+                    >
                       <span className="ml-1 text-lg">
                         ₹
                         {product.ProductPrice -

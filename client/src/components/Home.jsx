@@ -10,15 +10,17 @@ import Testimonial from "./Testimonial";
 import Brands from "./Brands";
 
 const images = [bc, bc1, bc2, bc3];
-
+const shopPage = () => {
+  window.location.href = "/Product";
+};
 const Home = () => {
   return (
     <>
-      <div className="h-[80vh] border-0 border-red-800">
-        <div className="w-[26.1vw] h-[18vh] bg-gray-50 absolute z-20 opacity-5 mt-[25vh] ml-[9.4vw]" />
-        <div className="absolute z-50 text-gray-50 text-4xl bg-gray-900 p-5 bg-transparent border w-[26.1vw] h-[18vh] border-gray-600 filter mt-[26vh] ml-[10vw]">
+      <div className="h-[93.5vh] border-0 border-red-800">
+        <div className="w-[27vw] h-[18vh] bg-gray-50 absolute z-20 opacity-5 mt-[25vh] ml-[9.4vw]" />
+        <div className="absolute z-30 text-gray-50 text-4xl bg-gray-900 p-5 bg-transparent border w-[27vw] h-[18vh] border-gray-600 filter mt-[26vh] ml-[10vw]">
           <p className="font-thin">
-            Update
+            Update&nbsp;
             <span className="font-extrabold tracking-widest text-slate-700">
               Your Look
             </span>
@@ -29,7 +31,8 @@ const Home = () => {
         <p className=" absolute z-20 text-sm font-thin text-cyan-700 tracking-widest ml-[9.5vw] mt-[45vh]">
           Follow recent trends in unique style
         </p>
-        <button className="absolute text-gray-50 z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[50vh] ml-[32vw]">
+          
+        <button onClick={shopPage} className="absolute text-gray-50 z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[54vh] ml-[32vw]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="10"
@@ -43,23 +46,26 @@ const Home = () => {
             />
           </svg>
         </button>
-        <button className="absolute tracking-widest text-cyan-600 font-semibold z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[50vh] ml-[26.1vw]">
+        <button
+          onClick={shopPage}
+          className="absolute tracking-widest text-cyan-600 font-semibold z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[54vh] ml-[26.1vw]"
+        >
           Shop
         </button>
-        <div className="absolute z-10">
+        <div className="z-10 flex justify-center items-center">
           <img
             src={bc}
             alt=""
-            className="relative h-[80vh] w-[100vw] object-cover"
+            className="h-[82vh] w-[90vw] object-cover rounded-md mt-12"
           />
         </div>
-        <div className="absolute z-30 w-[30px] h-[45px] mt-[71vh] ml-[48vw] border-2 p-0 rounded-3xl downArrow items-center flex justify-center">
+        <div className="absolute z-30 w-[30px] h-[45px] -mt-[8vh] ml-[48vw] border-2 p-0 rounded-3xl downArrow items-center flex justify-center">
           <span className="">↓</span>
         </div>
       </div>
 
-      <div className="bg-gray-200 h-[30vh] border-0 flex flex-col items-center justify-center">
-        <div className="w-[0.1vw] h-[6vh] bg-gray-700 my-10" />
+      <div className="bg-gray-50 h-[23vh] border-0 flex flex-col items-center justify-center">
+        <div className="w-[0.1vw] h-[5vh] bg-gray-700 my-5" />
         <p className=" text-gray-600 text-sm tracking-wide">
           ALYSUM IS A PREMIUM ECOMMERCE THEME.
         </p>
@@ -71,12 +77,22 @@ const Home = () => {
       {/* Import Other Components */}
       <ProductsMen />
 
+      <Brands />
+
       {/* <Newsletter/> */}
       {/* offer grid start */}
-      <p>What we Offer</p>
+      <div className="mx-[8vw] w-[82vw] border-b flex justify-between text-sm mt-16">
+        <div className="text-indigo-600 flex items-center pb-2 pr-2 border-b-0 border-indigo-600 uppercase">
+          <button className="font-semibold inline-block">What we Offer</button>
+        </div>
+      </div>
       <div className="h-[60vh] w-[95vw] grid grid-cols-3 gap-6 py-10 px-6 border-0 pl-[9.5vw] items-center justify-center">
         <div className="w-[27.5vw] h-[50vh] relative">
-          <img src={bc1} alt="x" className="object-cover rounded shadow-md h-full" />
+          <img
+            src={bc1}
+            alt="x"
+            className="object-cover rounded shadow-md h-full"
+          />
           <div className="h-full w-full absolute flex flex-col item-center justify-center p-8 text-gray-300 -mt-[50vh]">
             <span className="uppercase text-lg font-thin">Exclusive</span>
             <span className="lowercase text-6xl font-thin">Discounts</span>
@@ -87,7 +103,11 @@ const Home = () => {
           </div>
         </div>
         <div className="w-[27.5vw] h-[50vh] relative">
-          <img src={bc5} alt="x" className="object-cover rounded shadow-md h-full" />
+          <img
+            src={bc5}
+            alt="x"
+            className="object-cover rounded shadow-md h-full"
+          />
           <p className="h-full w-full absolute flex flex-col item-center justify-center p-8 text-gray-300 -mt-[50vh]">
             <span className="uppercase text-lg font-thin">shop now </span>
             <span className="lowercase text-6xl font-thin">hottest news</span>
@@ -96,7 +116,11 @@ const Home = () => {
         </div>
         <div className="w-fit h-[50vh]">
           <div className="h-[23vh] mb-[2.5vh] relative">
-            <img src={bc3} alt="x" className="object-cover rounded shadow-md w-[95%] h-[24.3vh]" />
+            <img
+              src={bc3}
+              alt="x"
+              className="object-cover rounded shadow-md w-[95%] h-[24.3vh]"
+            />
             <p className="h-full w-full absolute flex flex-col item-center justify-center p-5 -mt-[20vh] text-gray-300">
               <span className="uppercase text-sm font-thin">see the great</span>
               <span className="lowercase text-5xl font-thin">attention to</span>
@@ -104,7 +128,11 @@ const Home = () => {
             </p>
           </div>
           <div className="h-[23vh] relative">
-            <img src={bc2} alt="x" className="object-cover rounded shadow-md w-[95%] h-[24.3vh]" />
+            <img
+              src={bc2}
+              alt="x"
+              className="object-cover rounded shadow-md w-[95%] h-[24.3vh]"
+            />
             <p className="h-full w-full absolute flex flex-col item-center justify-center p-4 -mt-[20vh] text-gray-300">
               <span className="uppercase text-sm font-thin">discover </span>
               <span className="lowercase text-5xl font-thin">style that</span>
@@ -116,7 +144,6 @@ const Home = () => {
       {/* offer grid end */}
 
       {/* testimonial start  */}
-      <Brands />
       <Testimonial />
       {/* testimonial end */}
 

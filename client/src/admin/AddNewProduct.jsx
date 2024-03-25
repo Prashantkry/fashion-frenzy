@@ -76,10 +76,10 @@ export function AddNewProduct() {
   return (
     <>
       <ToastContainer />
-      <div className="lg:max-w-[96%] md:max-w-[744px] max-w-[375px] h-[75vh] mx-auto bg-gray-900 py-12 px-6 ">
+      <div className="lg:max-w-[96%] md:max-w-[744px] max-w-[375px] h-[75vh] mx-auto bg-gray-50 py-12 px-6 mt-12">
         <div>
           <div className="flex gap-3 pl-5">
-            <p className="text-sm font-medium text-gray-300 pb-5">
+            <p className="text-sm font-medium text-gray-800 pb-5">
               Product Information
             </p>
           </div>
@@ -88,7 +88,7 @@ export function AddNewProduct() {
         <div className="flex lg:flex-row md:flex-col-reverse flex-col-reverse justify-between lg:px-14 md:px-6 px-4 mt-6 w-full">
           <div className="text">
             {/* <div className="w-full lg:mt-0 mt-6">
-              <p className="text-base text-gray-300">Product Id</p>
+              <p className="text-base text-gray-800">Product Id</p>
               <input
                 type="text"
                 name
@@ -98,7 +98,7 @@ export function AddNewProduct() {
               />
             </div> */}
             <div className="w-full lg:mt-6 mt-6">
-              <p className="text-base text-gray-300">Product Name</p>
+              <p className="text-base text-gray-800">Product Name</p>
               <input
                 type="text"
                 name
@@ -109,7 +109,7 @@ export function AddNewProduct() {
             </div>
             <div className>
               <div className="mt-6">
-                <p className="text-base text-gray-300">Description</p>
+                <p className="text-base text-gray-800">Description</p>
                 <input
                   type="text"
                   name
@@ -122,7 +122,7 @@ export function AddNewProduct() {
 
             <div className="lg:flex md:flex block gap-8 md:mt-4 mt-6">
               <div className="w-full">
-                <p className="text-base text-gray-300">Price</p>
+                <p className="text-base text-gray-800">Price</p>
                 <input
                   type="text"
                   name
@@ -134,7 +134,7 @@ export function AddNewProduct() {
             </div>
             <div className="lg:flex md:flex block gap-8 md:mt-4 mt-6">
               <div className="mt-4 w-full">
-                <p className="text-base text-gray-300">Category</p>
+                <p className="text-base text-gray-800">Category</p>
                 <select
                   className="text-gray-500 focus:outline-none border bg-transparent border-gray-300  w-full py-3 px-3 rounded mt-4"
                   id="ProductCategory"

@@ -69,7 +69,7 @@ export function AddNewProduct() {
 
   return (
     <>
-      <div className="lg:max-w-[96%] md:max-w-[744px] max-w-[375px] h-[75vh] mx-auto bg-gray-900 py-5 ">
+      <div className="lg:max-w-[96%] md:max-w-[744px] max-w-[375px] h-[75vh] mx-auto bg-gray-50 py-5 ">
         <div>
           <div className="flex gap-3 pl-5">
             <p className="text-sm font-medium text-gray-300 pb-5">

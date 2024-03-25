@@ -12,7 +12,8 @@ const signInValidate = async (req, res) => {
     });
     if (pass && pass.Password === Password) {
       const UserId = loginData.UserId;
-      res.status(200).json({ message: "LoginS", UserId });
+      const Role = loginData.Role;
+      res.status(200).json({ message: "LoginS", UserId , Role});
     } else {
       res.status(400).json({ message: "passW" });
     }

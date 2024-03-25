@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 const APIUrl = "http://localhost:8000/api/v1";
-import { bc6 } from "../../components/Images";
-// import { useParams } from "react-router-dom";  get data from url
+import { bc6 } from "../components/Images";
 
-const AdminProfile = () => {
+const UserProfile = () => {
   const [userData, setUserData] = useState({});
   const [editMode, setEditMode] = useState(false);
 
@@ -41,56 +40,36 @@ const AdminProfile = () => {
     navigator.clipboard.writeText(userData.UserId);
     alert("UserId copied to clipboard");
   };
+
   return (
-    <>
-      {/* <div>
-        <div
-          className="w-full h-[85vh] object-contain center flex items-center justify-center py-10"
-          // style={{ backgroundImage: `url(${bc6})` }}
-        >
-          <div className="flex flex-col pt-20 items-start justify-start w-[78vw] rounded border-0 p-5 h-full bg-gray-950">
-            <div className="w-full rounded flex items-center justify-start pl-10 border-0">
-              <img
-                src={userdata.Pic}
-                alt="X"
-                className="rounded border-2 p-1 w-[150x] h-[150px] mr-10"
-              />
-              <div className="flex flex-col items-start justify-start text-gray-100">
-                <p className="tracking-widest font-serif">{userdata.Name}</p>
-                <p className="tracking-widest font-serif w-[300px] overflow-hidden">
-                  UserId {userdata.UserId}
-                </p>
-              </div>
-            </div>
-            <div className="leading-10 ml-10 mt-7">
-              <p className="text-gray-300 tracking-widest font-serif">
-                Email - {userdata.Email}
-              </p>
-              <p className="text-gray-300 tracking-widest font-serif">
-                Phone - {userdata.Phone}
-              </p>
-              <p className="text-gray-300 tracking-widest font-serif">
-                Address - {userdata.Address}
-              </p>
-              <p className="text-gray-300 tracking-widest font-serif">
-                PinCode - {userdata.PinCode}
-              </p>
-            </div>
-            <div className="w-[300px] flex items-center justify-around rounded ml-2 mt-5">
-              <button className="bg-red-900 p-1 w-[80px] h-[40px] rounded">Delete</button>
-              <button className="bg-green-800 p-1 w-[80px] h-[40px] rounded">Update</button>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      <div className="w-full bg-white h-[87vh] flex items-center justify-center p-2">
+    <div className="w-full h-[90vh] flex items-center justify-center p-2">
       <div className="container flex flex-col w-[40vw] h-[85vh] p-7 items-start justify-start border-2 shadow-lg">
         <div className="w-full rounded flex items-center justify-start pl-10 border-0">
-          <img
-            src={userData.Pic}
-            alt="User Pic"
-            className="rounded border-2 p-1 w-[150px] h-[150px] mr-10"
-          />
+          {userData.Pic ? (
+            <img
+              src={userData.Pic}
+              alt="User Pic"
+              className="rounded border-2 p-1 w-[150px] h-[150px] mr-10"
+            />
+          ) : (
+            <div className="rounded border-2 p-1 w-[150px] h-[150px] mr-10">
+              <p className="w-full h-full text-[120px] flex items-center justify-center text-gray-700">
+                {userData.Name ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    fill="gray"
+                    className="w-[50px] h-[50px]"
+                  >
+                    <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+                  </svg>
+                ) : (
+                  ""
+                )}
+              </p>
+              {/* (userData.Name.slice(0, 1)) */} {/* for name instead of '' */}
+            </div>
+          )}
           <div className="flex flex-col items-start justify-start text-gray-800">
             <p className="tracking-widest font-serif">
               Name:
@@ -237,8 +216,7 @@ const AdminProfile = () => {
         </div>
       </div>
     </div>
-    </>
   );
 };
 
-export default AdminProfile;
+export default UserProfile;

@@ -4,7 +4,7 @@ import AdminProfile from "./AdminProfile/AdminProfile";
 import UserList from "./AdminProfile/UserList";
 
 function AdminDashboard() {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState("AddNewProduct");
 
   const toggleData = (section) => {
     setActive(section);
@@ -13,11 +13,11 @@ function AdminDashboard() {
     <div className="flex flex-no-wrap h-[85vh] lg:h-[85vh] ">
       {/* Sidebar starts */}
       {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
-      <div className="w-64 absolute sm:relative bg-gray-900 shadow md:h-full flex-col justify-between flex border-r border-r-gray-400">
+      <div className="w-64 absolute sm:relative bg-gray-100 shadow md:h-full flex-col justify-between flex border-r border-r-gray-300">
         <div>
           <ul className="mt-12">
             <li
-              className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center py-3 px-8"
+              className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center py-3 px-8"
               onClick={() => toggleData("dashboard")}
             >
               <div className="flex items-center">
@@ -42,7 +42,7 @@ function AdminDashboard() {
                 <span className="text-sm  ml-2">Dashboard</span>
               </div>
             </li>
-            {/* <li className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center px-8 py-3">
+            {/* <li className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center px-8 py-3">
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +63,8 @@ function AdminDashboard() {
               </div>
             </li> */}
             <li
-              onClick={()=>toggleData("user")}
-              className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center px-8 py-3"
+              onClick={() => toggleData("user")}
+              className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center px-8 py-3"
             >
               <div className="flex items-center">
                 <svg
@@ -88,7 +88,7 @@ function AdminDashboard() {
             </li>
             <li
               onClick={() => toggleData("AddNewProduct")}
-              className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center px-8 py-3"
+              className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center px-8 py-3"
             >
               <div className="flex items-center">
                 <svg
@@ -111,7 +111,7 @@ function AdminDashboard() {
                 <span className="text-sm  ml-2">Cerate Product</span>
               </div>
             </li>
-            <li className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center  px-8 py-3">
+            <li className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center  px-8 py-3">
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@ function AdminDashboard() {
                 <span className="text-sm  ml-2">Payment</span>
               </div>
             </li>
-            <li className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center px-8 py-3">
+            <li className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center px-8 py-3">
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +153,7 @@ function AdminDashboard() {
                 <span className="text-sm  ml-2">Orders</span>
               </div>
             </li>
-            <li className="flex w-full justify-between text-gray-300 hover:text-gray-300 hover:bg-gray-800 cursor-pointer items-center px-8 py-3">
+            <li className="flex w-full justify-between text-gray-800 hover:text-gray-950 hover:font-semibold hover:bg-gray-300 cursor-pointer items-center px-8 py-3">
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -178,8 +178,7 @@ function AdminDashboard() {
         </div>
       </div>
       {/* Sidebar ends */}
-      {/* Remove class [ h-64 ] when adding a card block */}
-      <div className="py-0 h-[85vh] w-full px-0 overflow-scroll no-scrollbar bg-gray-900">
+      <div className="py-0 h-[85vh] w-full px-0 overflow-scroll no-scrollbar bg-gray-100">
         {active === "AddNewProduct" && <AddNewProduct />}
         {active === "dashboard" && <AdminProfile />}
         {active === "user" && <UserList />}

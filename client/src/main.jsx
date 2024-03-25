@@ -20,28 +20,51 @@ import SignUp from "./components/SignUp.jsx";
 import { Provider } from "react-redux";
 import Store from "./redux/Store.js";
 import CheckOut from "./components/CheckOut.jsx";
+import User from "./user/UserDashboard.jsx";
+
+const role = localStorage.getItem("Role") === "true"; 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="/product" element={<Product />} />
-      <Route path="adminDashboard/" element={<AdminDashboard />}/>
+      {/* <Route path="adminDashboard/" element={<AdminDashboard />} />
+      <Route path="user" element={<User />} /> */}
       <Route path="contact" element={<Contact />} />
       <Route path="signIn" element={<SignIn />} />
       <Route path="signUp" element={<SignUp />} />
       <Route path="checkout" element={<CheckOut />} />
+      {role ? (
+        <Route path="/adminDashboard" element={<AdminDashboard />} />
+      ) : (
+        <Route path="/user" element={<User />} />
+      )}
       <Route path="*" element={<NotFound />} />
     </Route>
   )
 );
-  // <React.StrictMode>
-  //   {/* <App /> */}
-  //   <RouterProvider router={router} />
-  // </React.StrictMode>
+
+// const renderRoutes = () => {
+//   if (role) {
+//     return (
+//       <Route path="/adminDashboard" element={<AdminDashboard />} />
+//     );
+//   } else {
+//     return (
+//       <Route path="/user" element={<User />} />
+//     );
+//   }
+// };
+// <React.StrictMode>
+//   {/* <App /> */}
+//   <RouterProvider router={router} />
+// </React.StrictMode>
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={Store}>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} >
+      {/* {renderRoutes()} */}
+    </RouterProvider>
   </Provider>
 );

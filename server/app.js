@@ -19,8 +19,8 @@ app.use(
 );
 
 //! google login start
-const helmet = require("helmet");
-app.use(helmet({ crossOriginResourcePolicy: false })); // act as middleware check headers
+// const helmet = require("helmet");
+// app.use(helmet({ crossOriginResourcePolicy: false })); // act as middleware check headers
 
 const passport = require("passport"); // step 1
 const { Strategy } = require("passport-google-oauth20"); // security reason implement with middleware
