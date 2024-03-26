@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const APIUrl = "http://localhost:8000/api/v1";
+const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
 export function AddNewProduct() {
   const [imageData, setImageData] = useState({ myFile: "" }); // convert to base64 start

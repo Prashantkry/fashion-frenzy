@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-const APIUrl = "http://localhost:8000/api/v1";
+const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
 const Product = () => {
   const [products, setProducts] = useState([]);

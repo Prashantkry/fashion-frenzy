@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const UserList = () => {
-  const APIUrl = "http://localhost:8000/api/v1";
+  const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
   const [allUser, setAllUser] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

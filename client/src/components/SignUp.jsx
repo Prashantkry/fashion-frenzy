@@ -4,7 +4,7 @@ import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const APIUrl = "http://localhost:8000/api/v1";
+const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
 export default function SignUp() {
   // image work start

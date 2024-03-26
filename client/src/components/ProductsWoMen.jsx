@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ProductsWoMen = () => {
   const [productsData, setProductsData] = useState([]);
-  const APIUrl = "http://localhost:8000/api/v1";
+  const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
   async function getProducts() {
     const productsJSON = await fetch(`${APIUrl}/product`);
