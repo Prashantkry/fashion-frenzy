@@ -65,13 +65,12 @@ const Men = () => {
                 key={id}
                 className="rounded overflow-hidden shadow-lg flex flex-col w-[330px] h-[500px] bg-gray-300"
               >
-                <Link href="#"></Link>
                 <div className="relative">
-                  <Link href="#">
+                  <Link to="/productDetails">
                     <img
                       className="w-full h-[350px] p-3 px-7"
                       src={product.ProductImage}
-                      alt="Sunset in the mountains"
+                      alt=""
                     />
                   </Link>
                   <Link href="#!">

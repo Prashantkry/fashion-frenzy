@@ -138,7 +138,7 @@ export default function Navbar() {
 
               <li>
                 <NavLink
-                  to={"/github"}
+                  to={"/features"}
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
                       isActive ? "text-orange-500" : "text-gray-900"

@@ -21,8 +21,10 @@ import { Provider } from "react-redux";
 import Store from "./redux/Store.js";
 import CheckOut from "./components/CheckOut.jsx";
 import User from "./user/UserDashboard.jsx";
+import ProductDetails from "./components/ProductDetails.jsx";
+import Features from "./components/Features.jsx";
 
-const role = localStorage.getItem("Role") === "true"; 
+const role = localStorage.getItem("Role") === "true";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,6 +42,8 @@ const router = createBrowserRouter(
       ) : (
         <Route path="/user" element={<User />} />
       )}
+      <Route path="/features" element={<Features />} />
+      <Route path="productDetails" element={<ProductDetails />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
@@ -63,8 +67,6 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={Store}>
-    <RouterProvider router={router} >
-      {/* {renderRoutes()} */}
-    </RouterProvider>
+    <RouterProvider router={router}>{/* {renderRoutes()} */}</RouterProvider>
   </Provider>
 );

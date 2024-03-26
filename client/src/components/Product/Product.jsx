@@ -9,6 +9,8 @@ const Product = () => {
   const [men, setMen] = useState([]);
   const [women, setWomen] = useState([]);
 
+  const [price, setPrice] = useState(0);
+
   useEffect(() => {
     fetch(`${APIUrl}/product`, {
       method: "GET",
@@ -47,7 +49,6 @@ const Product = () => {
       .then((data) => {
         setProducts(data.allProducts);
       });
-    console.log(products);
   }
   function handleMen() {
     setProducts(men);
@@ -99,6 +100,39 @@ const Product = () => {
     }
   };
 
+  console.log(products);
+
+  const handle99_499 = (ProductPrice) => {
+    if(ProductPrice>=99 && ProductPrice<=499){
+      
+    }
+  };
+
+  const handle499_999 = (ProductPrice) => {
+    if(ProductPrice>=499 && ProductPrice<=999){
+
+    }
+  };
+
+  const handle999_2999 = (ProductPrice) => {
+    if(ProductPrice>=999 && ProductPrice<=2999){
+
+    }
+  };
+
+  const handle2999_4999 = (ProductPrice) => {
+    if(ProductPrice>=2999 && ProductPrice<=4999){
+
+    }
+  };
+
+  const handle5000 = (ProductPrice) => {
+    if(ProductPrice>=5000){
+
+    }
+  };
+
+
   return (
     <>
       <ToastContainer />
@@ -130,23 +164,29 @@ const Product = () => {
           <div className="py-6 px-8">
             <p className="text-lg font-semibold tracking-wide">PRICE</p>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" />
+              <input
+                type="radio"
+                name=""
+                id=""
+                className="mr-3"
+                onClick={handle99_499}
+              />
               <label htmlFor="99-499">₹ 99 - ₹ 499</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" />
+              <input type="radio" name="" id="" className="mr-3" onClick={handle499_999}/>
               <label htmlFor="99-499">₹ 499 - ₹ 999</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" />
+              <input type="radio" name="" id="" className="mr-3" onClick={handle999_2999}/>
               <label htmlFor="99-499">₹ 999 - ₹ 2999</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[48%]">
-              <input type="radio" name="" id="" className="mr-3" />
+              <input type="radio" name="" id="" className="mr-3" onClick={handle2999_4999}/>
               <label htmlFor="99-499">₹ 2999 - ₹ 4999</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" />
+              <input type="radio" name="" id="" className="mr-3" onClick={handle5000}/>
               <label htmlFor="99-499">₹ 5000 +</label>
             </div>
           </div>
@@ -284,13 +324,12 @@ const Product = () => {
                   key={i}
                   className="rounded overflow-hidden shadow-lg flex flex-col w-[314px] bg-gray-100"
                 >
-                  <Link to="#"></Link>
                   <div className="relative">
-                    <Link to="#">
+                    <Link to="/productDetails">
                       <img
                         className="w-full h-[350px] p-3 pb-1"
                         src={e.ProductImage}
-                        alt="Sunset in the mountains"
+                        alt=""
                       />
                     </Link>
                     <Link to="#!">
@@ -311,36 +350,30 @@ const Product = () => {
                     </p>
                   </div>
                   <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                  <button
-                    onClick={() => addToCart(e)}
-                    className=" text-gray-800 border border-gray-900 p-1 text-sm px-2 rounded font-semibold -mt-1 -ml-3"
-                  >
-                    Add to Cart →
-                  </button>
-
-                  <div className="flex items-center justify-center">
-                    <span
-                      className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center"
+                    <button
+                      onClick={() => addToCart(e)}
+                      className=" text-gray-800 border border-gray-900 p-1 text-sm px-2 rounded font-semibold -mt-1 -ml-3"
                     >
-                      <span className="ml-1 line-through text-gray-600 font-semibold text-xs mt-1">
-                        ₹ {e.ProductPrice}
-                      </span>
-                    </span>
+                      Add to Cart →
+                    </button>
 
-                    <span
-                      className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center"
-                    >
-                      <span className="ml-1 text-lg">
-                        ₹
-                        {e.ProductPrice -
-                          (30 * e.ProductPrice) / 100}
-                        <span className="text-green-700 font-semibold text-xs">
-                          (30% Off)
+                    <div className="flex items-center justify-center">
+                      <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                        <span className="ml-1 line-through text-gray-600 font-semibold text-xs mt-1">
+                          ₹ {e.ProductPrice}
                         </span>
                       </span>
-                    </span>
+
+                      <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                        <span className="ml-1 text-lg">
+                          ₹{e.ProductPrice - (30 * e.ProductPrice) / 100}
+                          <span className="text-green-700 font-semibold text-xs">
+                            (30% Off)
+                          </span>
+                        </span>
+                      </span>
+                    </div>
                   </div>
-                </div>
                 </div>
               ))}
             </div>

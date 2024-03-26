@@ -16,5 +16,26 @@ import b5 from "../Images/brand/5.jpg";
 import b6 from "../Images/brand/6.jpg";
 import b7 from "../Images/brand/7.jpg";
 
+import features from "../Images/features.png";
+import arrow from "../Images/arrowR1.png";
+
 export default bc;
-export { bc1, bc2, bc3, bc4, boxSvg, w1, bc5, bc6, b1, b2, b3, b4, b5, b6, b7 };
+export {
+  bc1,
+  bc2,
+  bc3,
+  bc4,
+  boxSvg,
+  w1,
+  bc5,
+  bc6,
+  b1,
+  b2,
+  b3,
+  b4,
+  b5,
+  b6,
+  b7,
+  features,
+  arrow,
+};
