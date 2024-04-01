@@ -6,7 +6,7 @@ import { addToCart } from "../redux/CartSlice";
 import "../App.css";
 
 function CheckOut() {
-  const APIURL = "http://localhost:8000/api/v1";
+  const APIURL = "https://fashion-frenzy.onrender.com/api/v1";
   const UserId = localStorage.getItem("UserId");
   // console.log(UserId);
 

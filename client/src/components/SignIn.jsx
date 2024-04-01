@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-const APIUrl = "http://localhost:8000/api/v1";
+const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ export default function SignIn() {
   async function googleLogin() {
     try {
       const response = await fetch(
-        "http://localhost:8000/auth/google",
+        "https://fashion-frenzy.onrender.com/auth/google",
         // { mode: "no-cors" },
         {
           method: "get",
@@ -76,7 +76,7 @@ export default function SignIn() {
   // google signIn
   // async function googleLogin() {
   //   try {
-  //     const response = await axios.get("http://localhost:8000/auth/google", {
+  //     const response = await axios.get("https://fashion-frenzy.onrender.com/auth/google", {
   //       method: "get",
   //       headers: {
   //         "Content-Type": "text/plain",
