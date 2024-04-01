@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { bc1, bc2, bc3, w1, bc5, bc4 } from "./Images";
+import { bc1, bc2, bc3, w1, bc5, bc4, back } from "./Images";
 import bc from "./Images";
 import "../App.css";
 import Navbar from "./Navbar";
@@ -13,56 +13,129 @@ const images = [bc, bc1, bc2, bc3];
 const shopPage = () => {
   window.location.href = "/Product";
 };
+
+// slide show of both content
+document.addEventListener("DOMContentLoaded", function () {
+  let currentContentIndex = 1;
+  const contentCount = 2;
+  function toggleContent() {
+    document.getElementById(`content${currentContentIndex}`).style.display = "none";
+    currentContentIndex = (currentContentIndex % contentCount) + 1;
+    document.getElementById(`content${currentContentIndex}`).style.display = "block";
+  }setInterval(toggleContent, 3000);
+});
+
 const Home = () => {
   return (
     <>
-      <div className="h-[93.5vh] border-0 border-red-800">
-        <div className="w-[27vw] h-[18vh] bg-gray-50 absolute z-20 opacity-5 mt-[25vh] ml-[9.4vw]" />
-        <div className="absolute z-30 text-gray-50 text-4xl bg-gray-900 p-5 bg-transparent border w-[27vw] h-[18vh] border-gray-600 filter mt-[26vh] ml-[10vw]">
-          <p className="font-thin">
-            Update&nbsp;
-            <span className="font-extrabold tracking-widest text-slate-700">
-              Your Look
-            </span>
-            <br /> now with our latest <br />
-            <span className="font-extrabold text-slate-700">must-haves.</span>
+      {/* main content start */}
+      <div>
+        {/* content 1 */}
+        <div className="h-[93.5vh] border-0 border-red-800" id="content1">
+          <div className="w-[27vw] h-[18vh] bg-gray-50 absolute z-20 opacity-5 mt-[25vh] ml-[9.4vw]" />
+          <div className="absolute z-30 text-gray-50 text-4xl bg-gray-900 p-5 bg-transparent border w-[27vw] h-[18vh] border-gray-600 filter mt-[26vh] ml-[10vw]">
+            <p className="font-thin">
+              Update&nbsp;
+              <span className="font-extrabold tracking-widest text-slate-700">
+                Your Look
+              </span>
+              <br /> now with our latest <br />
+              <span className="font-extrabold text-slate-700">must-haves.</span>
+            </p>
+          </div>
+          <p className=" absolute z-20 text-sm font-semibold text-cyan-700 tracking-widest ml-[10vw] mt-[45vh]">
+            Follow recent trends in unique style
           </p>
-        </div>
-        <p className=" absolute z-20 text-sm font-thin text-cyan-700 tracking-widest ml-[9.5vw] mt-[45vh]">
-          Follow recent trends in unique style
-        </p>
-          
-        <button onClick={shopPage} className="absolute text-gray-50 z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[54vh] ml-[32vw]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="10"
-            width="10"
-            viewBox="0 0 512 512"
-            className="w-[30px] h-[30px] "
+
+          <button
+            onClick={shopPage}
+            className="absolute text-gray-50 z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[54vh] ml-[32vw]"
           >
-            <path
-              fill="#165474"
-              d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="10"
+              width="10"
+              viewBox="0 0 512 512"
+              className="w-[30px] h-[30px] "
+            >
+              <path
+                fill="#165474"
+                d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={shopPage}
+            className="absolute tracking-widest text-cyan-600 font-semibold z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[54vh] ml-[26.1vw]"
+          >
+            Shop
+          </button>
+          <div className="z-10 flex justify-center items-center">
+            <img
+              src={bc}
+              alt=""
+              className="h-[82vh] w-[90vw] object-cover rounded-md mt-12"
             />
-          </svg>
-        </button>
-        <button
-          onClick={shopPage}
-          className="absolute tracking-widest text-cyan-600 font-semibold z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[54vh] ml-[26.1vw]"
-        >
-          Shop
-        </button>
-        <div className="z-10 flex justify-center items-center">
-          <img
-            src={bc}
-            alt=""
-            className="h-[82vh] w-[90vw] object-cover rounded-md mt-12"
-          />
+          </div>
+          <div className="absolute z-30 w-[30px] h-[45px] -mt-[8vh] ml-[48vw] border-2 p-0 rounded-3xl downArrow items-center flex justify-center">
+            <span className="">↓</span>
+          </div>
         </div>
-        <div className="absolute z-30 w-[30px] h-[45px] -mt-[8vh] ml-[48vw] border-2 p-0 rounded-3xl downArrow items-center flex justify-center">
-          <span className="">↓</span>
+        {/* content 2 */}
+        <div className="h-[93.5vh] border-0 border-red-800" id="content2">
+          <div className="w-[29vw] border h-[23vh] absolute mt-[26vh] ml-[10vw] flex items-center justify-center">
+            <div className="absolute z-30 text-gray-50 text-4xl p-5 m-5 border-0 border-gray-600 filter">
+              <p className="font-thin">
+                create your &nbsp;
+                <span className="font-extrabold tracking-widest text-slate-700">
+                  Style with Our
+                </span>
+                <br /> Hottest arrival for her.
+                <br />
+                {/* <span className="font-extrabold text-slate-700"></span> */}
+              </p>
+            </div>
+          </div>
+          <p className=" absolute z-20 text-sm font-semibold text-cyan-700 tracking-widest ml-[10vw] mt-[50vh]">
+            Sale offer <span className="text-3xl ">20%</span><span className=" font-bold">ff</span> this week
+          </p>
+
+          <button
+            onClick={shopPage}
+            className="absolute text-gray-50 z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around mt-[60vh] ml-[27vw]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="10"
+              width="10"
+              viewBox="0 0 512 512"
+              className="w-[30px] h-[30px] "
+            >
+              <path
+                fill="#165474"
+                d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={shopPage}
+            className="absolute tracking-widest text-cyan-900 z-20 h-[100px] w-[100px] ring-1 rounded-full flex items-center justify-around font-bold mt-[60vh] ml-[21vw]"
+          >
+            Shop
+          </button>
+          <div className="z-10 flex justify-center items-center">
+            <img
+              src={back}
+              alt=""
+              className="h-[82vh] w-[90vw] object-cover rounded-md mt-12"
+            />
+          </div>
+          <div className="absolute z-30 w-[30px] h-[45px] -mt-[8vh] ml-[48vw] border-2 p-0 rounded-3xl downArrow items-center flex justify-center">
+            <span className="">↓</span>
+          </div>
         </div>
       </div>
+      {/* main content end */}
 
       <div className="bg-gray-50 h-[23vh] border-0 flex flex-col items-center justify-center">
         <div className="w-[0.1vw] h-[5vh] bg-gray-700 my-5" />

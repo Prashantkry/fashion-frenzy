@@ -6,7 +6,7 @@ const Features = () => {
     <>
       <div className="h-[83vh] flex flex-row-reverse items-center justify-around">
         <div className="relative grid grid-cols-3 gap-3 p-2 w-[63%] h-[44vh] border-0">
-          <div className="absolute text-3xl font-semibold -mt-10 tracking-wide poppins-medium flex ">
+          <div className="absolute text-3xl font-semibold -mt-10 tracking-wide flex ">
             <p>What We Offer</p>
             <img src={arrow} alt="" className="w-[80px] mt-5 rotate-6" />
           </div>

@@ -9,7 +9,11 @@ const addNewProduct = async (req, res) => {
     productPrice,
     ProductCategory,
     imageDatas,
+    imageDatas1,
+    imageDatas2,
   } = req.body;
+
+  console.log(imageDatas,imageDatas1,imageDatas2)
 
   const productCount = await ProductModel.countDocuments();
 
@@ -20,6 +24,8 @@ const addNewProduct = async (req, res) => {
     ProductPrice: parseInt(productPrice),
     ProductCategory: ProductCategory,
     ProductImage: imageDatas,
+    ProductImage1: imageDatas1,
+    ProductImage2: imageDatas2,
   });
 
   const newData = await ProductModel.create(newProduct);

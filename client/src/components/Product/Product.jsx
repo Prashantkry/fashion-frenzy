@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
+const APIUrl = "http://localhost:8000/api/v1";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -103,35 +103,40 @@ const Product = () => {
   console.log(products);
 
   const handle99_499 = (ProductPrice) => {
-    if(ProductPrice>=99 && ProductPrice<=499){
-      
+    if (ProductPrice >= 99 && ProductPrice <= 499) {
     }
   };
 
   const handle499_999 = (ProductPrice) => {
-    if(ProductPrice>=499 && ProductPrice<=999){
-
+    if (ProductPrice >= 499 && ProductPrice <= 999) {
     }
   };
 
   const handle999_2999 = (ProductPrice) => {
-    if(ProductPrice>=999 && ProductPrice<=2999){
-
+    if (ProductPrice >= 999 && ProductPrice <= 2999) {
     }
   };
 
   const handle2999_4999 = (ProductPrice) => {
-    if(ProductPrice>=2999 && ProductPrice<=4999){
-
+    if (ProductPrice >= 2999 && ProductPrice <= 4999) {
     }
   };
 
   const handle5000 = (ProductPrice) => {
-    if(ProductPrice>=5000){
-
+    if (ProductPrice >= 5000) {
     }
   };
 
+  const calculateDiscountedPrice = (productPrice, discountPercentage) => {
+    return (productPrice - discountPercentage * productPrice).toFixed(1);
+  };
+
+  const handleDiscount = (e,value) => {
+    const filteredProducts = products.filter((product) => {
+      // if(product.)
+    });
+    setProducts(filteredProducts);
+  };
 
   return (
     <>
@@ -155,9 +160,17 @@ const Product = () => {
               Filter Product
             </button>
             <select className="flex items-center justify-center border p-1 ">
-              <option> Sort </option>
+              {/* <option> Sort </option>
               <option> Relevance </option>
-              <option> Most Bought </option>
+              <option> Most Bought </option> */}
+              <option> Brands </option>
+              <option> LEVI'S </option>
+              <option> GLORISA </option>
+              <option> Raymond </option>
+              <option> METRONAUT </option>
+              <option> Houseofchic </option>
+              <option> FUBAR </option>
+              <option> STONEBERG </option>
             </select>
           </div>
           {/* sorting by price  */}
@@ -174,45 +187,44 @@ const Product = () => {
               <label htmlFor="99-499">₹ 99 - ₹ 499</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" onClick={handle499_999}/>
+              <input
+                type="radio"
+                name=""
+                id=""
+                className="mr-3"
+                onClick={handle499_999}
+              />
               <label htmlFor="99-499">₹ 499 - ₹ 999</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" onClick={handle999_2999}/>
+              <input
+                type="radio"
+                name=""
+                id=""
+                className="mr-3"
+                onClick={handle999_2999}
+              />
               <label htmlFor="99-499">₹ 999 - ₹ 2999</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[48%]">
-              <input type="radio" name="" id="" className="mr-3" onClick={handle2999_4999}/>
+              <input
+                type="radio"
+                name=""
+                id=""
+                className="mr-3"
+                onClick={handle2999_4999}
+              />
               <label htmlFor="99-499">₹ 2999 - ₹ 4999</label>
             </div>
             <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input type="radio" name="" id="" className="mr-3" onClick={handle5000}/>
+              <input
+                type="radio"
+                name=""
+                id=""
+                className="mr-3"
+                onClick={handle5000}
+              />
               <label htmlFor="99-499">₹ 5000 +</label>
-            </div>
-          </div>
-
-          {/* sorting by CUSTOMER RATINGS  */}
-          <div className="py-6 px-8">
-            <p className="text-lg font-semibold tracking-wide">
-              CUSTOMER RATINGS
-            </p>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-              />
-              <p>4 ★ & above</p>
-            </div>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-              />
-              <p>3 ★ & above</p>
             </div>
           </div>
 
@@ -225,6 +237,17 @@ const Product = () => {
                 name=""
                 id=""
                 className="mr-2 text-gray-500"
+                onChange={(e) => handleDiscount(e.target.checked , 0.2)}
+              />
+              <p>20% or more</p>
+            </div>
+            <div className="mt-2 flex items-center justify-start">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                className="mr-2 text-gray-500"
+                onChange={(e) => handleDiscount(e.target.checked , 0.3)}
               />
               <p>30% or more</p>
             </div>
@@ -234,6 +257,7 @@ const Product = () => {
                 name=""
                 id=""
                 className="mr-2 text-gray-500"
+                onChange={(e) => handleDiscount(e.target.checked , 0.4)}
               />
               <p>40% or more</p>
             </div>
@@ -243,6 +267,7 @@ const Product = () => {
                 name=""
                 id=""
                 className="mr-2 text-gray-500"
+                onChange={(e) => handleDiscount(e.target.checked , 0.5)}
               />
               <p>50% or more</p>
             </div>
@@ -252,10 +277,11 @@ const Product = () => {
                 name=""
                 id=""
                 className="mr-2 text-gray-500"
+                onChange={(e) => handleDiscount(e.target.checked , 0.6)}
               />
               <p>60% or more</p>
             </div>
-            <div className="mt-2 flex items-center justify-start">
+            {/* <div className="mt-2 flex items-center justify-start">
               <input
                 type="checkbox"
                 name=""
@@ -263,7 +289,7 @@ const Product = () => {
                 className="mr-2 text-gray-500"
               />
               <p>70% or more</p>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center justify-center mt-7">
             <button className="bg-red-700 w-[80%] text-lg font-semibold text-white tracking-wide rounded py-2">
@@ -359,17 +385,49 @@ const Product = () => {
 
                     <div className="flex items-center justify-center">
                       <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                        <span className="ml-1 line-through text-gray-600 font-semibold text-xs mt-1">
+                        <span className="ml-1 line-through text-gray-600 font-semibold text-[9px] mt-1">
                           ₹ {e.ProductPrice}
                         </span>
                       </span>
 
                       <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                        <span className="ml-1 text-lg">
-                          ₹{e.ProductPrice - (30 * e.ProductPrice) / 100}
-                          <span className="text-green-700 font-semibold text-xs">
-                            (30% Off)
-                          </span>
+                        <span className="ml-1 font-semibold text-[12px]">
+                          {/* ₹{e.ProductPrice - (30 * e.ProductPrice) / 100} */}
+                          {e.ProductPrice >= 1 &&
+                            e.ProductPrice < 499 &&
+                            `₹ ${calculateDiscountedPrice(
+                              e.ProductPrice,
+                              0.2
+                            )} (20% Off)`}
+                          {e.ProductPrice >= 499 &&
+                            e.ProductPrice < 999 &&
+                            `₹ ${calculateDiscountedPrice(
+                              e.ProductPrice,
+                              0.3
+                            )} (30% Off)`}
+                          {e.ProductPrice >= 999 &&
+                            e.ProductPrice <= 1999 &&
+                            `₹ ${calculateDiscountedPrice(
+                              e.ProductPrice,
+                              0.35
+                            )} (35% Off)`}
+                          {e.ProductPrice >= 2000 &&
+                            e.ProductPrice <= 3999 &&
+                            `₹ ${calculateDiscountedPrice(
+                              e.ProductPrice,
+                              0.55
+                            )} (55% Off)`}
+                          {e.ProductPrice >= 4000 &&
+                            e.ProductPrice <= 6999 &&
+                            `₹ ${calculateDiscountedPrice(
+                              e.ProductPrice,
+                              0.4
+                            )} (40% Off)`}
+                          {e.ProductPrice > 6999 &&
+                            `₹ ${calculateDiscountedPrice(
+                              e.ProductPrice,
+                              0.6
+                            )} (60% Off)`}
                         </span>
                       </span>
                     </div>

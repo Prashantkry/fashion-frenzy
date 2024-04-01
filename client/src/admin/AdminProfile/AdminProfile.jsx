@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
+const APIUrl = "http://localhost:8000/api/v1";
 import { bc6 } from "../../components/Images";
 // import { useParams } from "react-router-dom";  get data from url
 

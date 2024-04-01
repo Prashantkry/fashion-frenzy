@@ -15,6 +15,7 @@ import b4 from "../Images/brand/4.jpg";
 import b5 from "../Images/brand/5.jpg";
 import b6 from "../Images/brand/6.jpg";
 import b7 from "../Images/brand/7.jpg";
+import back from "../Images/back.jpg";
 
 import features from "../Images/features.png";
 import arrow from "../Images/arrowR1.png";
@@ -38,4 +39,5 @@ export {
   b7,
   features,
   arrow,
+  back
 };

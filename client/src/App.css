@@ -70,3 +70,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+#content2 {
+  display: none;
+}
+#content1, #content2 {
+  transition: opacity 0.5s ease;
+}

@@ -3,36 +3,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
+const APIUrl = "http://localhost:8000/api/v1";
 
 export function AddNewProduct() {
-  const [imageData, setImageData] = useState({ myFile: "" }); // convert to base64 start
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const convertToBase64 = async (file) => {
-    return new Promise((res, rej) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        res(reader.result);
-      };
-      reader.onerror = (error) => {
-        console.log("error", error);
-        rej(error);
-      };
-    });
-  };
-
-  const imageDataChange = async (e) => {
-    const file = e.target.files[0];
-    const convertToBase64Res = await convertToBase64(file);
-    setImageData({ ...imageData, myFile: convertToBase64Res });
-    setSelectedImage(imageData);
-  };
-
   const addProduct = async () => {
     console.log("add product triggered");
-    // let productId = document.getElementById("productId").value;
     let productName = document.getElementById("productName").value;
     let ProductDescriptions = document.getElementById(
       "ProductDescriptions"
@@ -40,15 +15,21 @@ export function AddNewProduct() {
     let productPrice = document.getElementById("productPrice").value;
     let ProductCategory = document.getElementById("ProductCategory").value;
 
+    let imageDatas = document.getElementById("imgM").value;
+    let imageDatas1 = document.getElementById("img1").value;
+    let imageDatas2 = document.getElementById("img2").value;
+
     // console.log(
-    //   productId,
+    //   // productId,
     //   productName,
     //   ProductDescriptions,
     //   productPrice,
     //   ProductCategory,
-    //   imageData
+    //   imageDatas,
+    //   imageDatas1,
+    //   imageDatas2,
     // );
-    const imageDatas = imageData.myFile;
+
     const pData = await fetch(`${APIUrl}/product`, {
       method: "POST",
       crossDomain: true,
@@ -64,6 +45,8 @@ export function AddNewProduct() {
         productPrice,
         ProductCategory,
         imageDatas,
+        imageDatas1,
+        imageDatas2,
       }),
     });
     const sentDataP = await pData.json();
@@ -71,7 +54,23 @@ export function AddNewProduct() {
     if (sentDataP.message === "Product added successfully") {
       toast.success("Product added successfully");
     }
+    document.getElementById("productName").value = "";
+    document.getElementById("ProductDescriptions").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("ProductCategory").value = "";
+    document.getElementById("imgM").value = "";
+    document.getElementById("img1").value = "";
+    document.getElementById("img2").value = "";
   };
+
+  function showInfoCloudinary() {
+    let Cloudinary = document.getElementById('Cloudinary')
+    Cloudinary.style.display = 'flex'
+  }
+  function hideInfoCloudinary() {
+    let Cloudinary = document.getElementById('Cloudinary')
+    Cloudinary.style.display = 'none'
+  }
 
   return (
     <>
@@ -87,16 +86,6 @@ export function AddNewProduct() {
         </div>
         <div className="flex lg:flex-row md:flex-col-reverse flex-col-reverse justify-between lg:px-14 md:px-6 px-4 mt-6 w-full">
           <div className="text">
-            {/* <div className="w-full lg:mt-0 mt-6">
-              <p className="text-base text-gray-800">Product Id</p>
-              <input
-                type="text"
-                name
-                id="productId"
-                placeholder=""
-                className="placeholder:text-sm placeholder bg-transparent text-gray-500 focus:outline-none border border-gray-300 lg:min-w-[540px] w-full py-3 px-3 rounded mt-4"
-              />
-            </div> */}
             <div className="w-full lg:mt-6 mt-6">
               <p className="text-base text-gray-800">Product Name</p>
               <input
@@ -153,57 +142,68 @@ export function AddNewProduct() {
             </div>
           </div>
 
-          {/* image work and add product start */}
-          <div className="lg:max-w-[20vw] border-0 flex flex-col items-center justify-center w-full  pb-4 py-8 lg:h-[50vh]">
-            <div className="border border-gray-300 w-full flex items-center justify-center pb-4 rounded-md py-8 lg:h-[90%]">
-              {!selectedImage && (
-                <>
-                  <label htmlFor="filePicker" className="cursor-pointer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                      />
-                    </svg>
-                  </label>
-                  <input
-                    type="file"
-                    name="myFile"
-                    id="filePicker"
-                    style={{ display: "none" }}
-                    onChange={(e) => imageDataChange(e)}
-                  />
-                </>
-              )}
-              {selectedImage && (
-                <img
-                  src={imageData.myFile}
-                  id="productImg"
-                  alt="X"
-                  className="w-full h-full object-contain"
+          {/* main image work and add product start */}
+          <div className="border-0 flex flex-col w-[35%] h-[60vh]">
+            <div className>
+              <div className="mt-6">
+                <div className="flex items-center justify-start border-0">
+                  <p className="text-base text-gray-800">Image Main url</p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-[12px] h-[12px] ml-2"
+                    onMouseEnter={showInfoCloudinary}
+                    onMouseLeave={hideInfoCloudinary}
+                  >
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                  </svg>
+                  <p className="text-xs border rounded w-fit absolute -mt-10 ml-7 hidden p-1" id="Cloudinary">Use Cloudinary or anyother for URL</p>
+                </div>
+
+                <input
+                  type="text"
+                  name
+                  id="imgM"
+                  placeholder=""
+                  className="placeholder:text-sm placeholder bg-transparent text-gray-500 focus:outline-none border border-gray-300 lg:min-w-[240px] w-full py-3 px-3 rounded mt-4"
                 />
-              )}
+              </div>
             </div>
-            {/* add product */}
-            {selectedImage && (
-              <button onClick={addProduct} className="flex justify-end px-4">
-                <div className="bg-indigo-700 lg:max-w-[143px] w-full py-3 px-2 rounded md:mt-12 mt-9 hover:bg-indigo-600 transition duration-300 ease-in-out cursor-pointer">
+            <div className>
+              <div className="mt-6">
+                <p className="text-base text-gray-800">Image support url1</p>
+                <input
+                  type="text"
+                  name
+                  id="img1"
+                  placeholder=""
+                  className="placeholder:text-sm placeholder bg-transparent text-gray-500 focus:outline-none border border-gray-300 lg:min-w-[240px] w-full py-3 px-3 rounded mt-4"
+                />
+              </div>
+            </div>
+            <div className>
+              <div className="mt-6">
+                <p className="text-base text-gray-800">Image support url2</p>
+                <input
+                  type="text"
+                  name
+                  id="img2"
+                  placeholder=""
+                  className="placeholder:text-sm placeholder bg-transparent text-gray-500 focus:outline-none border border-gray-300 lg:min-w-[240px] w-full py-3 px-3 rounded mt-4"
+                />
+              </div>
+            </div>
+            <div className>
+              <button onClick={() => addProduct()} className="mt-10 w-full">
+                <div className="bg-indigo-700 w-full py-3 px-2 rounded md:mt-5 mt-9 hover:bg-indigo-600 transition duration-300 ease-in-out cursor-pointer">
                   <div className="flex gap-2 items-center justify-center">
                     <p className="text-white">Add Product</p>
                   </div>
                 </div>
               </button>
-            )}
+            </div>
           </div>
-          {/* image work and add product end */}
+          {/* main image work and add product end */}
         </div>
       </div>
     </>

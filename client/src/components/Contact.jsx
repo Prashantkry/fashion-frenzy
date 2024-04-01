@@ -7,7 +7,7 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   // console.log(name, email, subject, message)
   const sendMail = async () => {
-    const sendData = await fetch("https://fashion-frenzy.onrender.com/api/v1/sendMail", {
+    const sendData = await fetch("http://localhost:8000/api/v1/sendMail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

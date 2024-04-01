@@ -6,7 +6,7 @@ import { addToCart } from "../redux/CartSlice";
 import "../App.css";
 
 function CheckOut() {
-  const APIURL = "https://fashion-frenzy.onrender.com/api/v1";
+  const APIURL = "http://localhost:8000/api/v1";
   const UserId = localStorage.getItem("UserId");
   // console.log(UserId);
 
@@ -38,7 +38,6 @@ function CheckOut() {
   // addToCart(cartDataFromFrontend);
 
   const [cartItems, setCartItems] = useState([]);
-  const [quantities, setQuantities] = useState({});
   const dispatch = useDispatch();
 
   let shipping;
@@ -85,7 +84,7 @@ function CheckOut() {
         },
       });
       const cartItemsData = await res.json();
-      // console.log(cartItemsData);
+      console.log(cartItemsData);
       setCartItems(cartItemsData.checkoutData.data);
       const cartLen = cartItemsData.checkoutData.data.length;
       dispatch(addToCart(cartLen));
@@ -94,18 +93,10 @@ function CheckOut() {
     checkoutData();
   }, [UserId, removeFromCartMemoized]);
 
-  const handleQuantityChange = (id, value) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: value === 0 ? 1 : value,
-    }));
-  };
-
   // Calculate subtotal
   // let subtotal = 100
   let subtotal = cartItems.reduce((acc, item) => {
-    const quantity = quantities[item.ProductId] || 1;
-    return acc + parseFloat(item.ProductPrice) * quantity;
+    return acc + parseFloat(item.ProductPrice);
   }, 0);
   subtotal = subtotal.toFixed(2);
 
@@ -120,11 +111,10 @@ function CheckOut() {
   }
 
   // payment integration using stripe
+  const publicKey =
+    "pk_test_51OWAMnSFC1dmGb39x0r3a91n2Hf5iteSRVrOfyPs8QO5u2rWPXXbbYNBgpdPm74UcrZLik0C3AMYoRmvNZdTCyOK00Zih3ysa3";
   const checkoutPlan = async () => {
-    const stripe = await loadStripe(
-      "pk_test_51OWAMnSFC1dmGb39x0r3a91n2Hf5iteSRVrOfyPs8QO5u2rWPXXbbYNBgpdPm74UcrZLik0C3AMYoRmvNZdTCyOK00Zih3ysa3"
-    );
-
+    // const stripe = await loadStripe(publicKey);    // when using session id 
     const pay = await fetch(`${APIURL}/create-checkout-session`, {
       method: "post",
       headers: {
@@ -133,21 +123,22 @@ function CheckOut() {
       body: JSON.stringify({
         cartItems,
         UserId,
-        quantities: 1,
       }),
     });
     const paymentDetails = await pay.json();
     console.log(paymentDetails);
 
-    const session = await pay.json();
+    // const session = await paymentDetails;  // ? when using session id 
+    // const res = stripe.redirectToCheckout({
+    //   sessionId: session.id,
+    // });
+    // if (res.error) {
+    //   console.log(res.error);
+    // }
 
-    const res = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (res.error) {
-      console.log(res.error);
-    }
+    const sessionURl = await paymentDetails.session.url;
+    console.log(sessionURl)
+    window.location.href = sessionURl
   };
 
   return (
@@ -199,20 +190,7 @@ function CheckOut() {
                         <p className="text-base font-black leading-none text-gray-800">
                           {item.ProductName}
                         </p>
-                        <select
-                          className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none"
-                          value={quantities[item.ProductId]}
-                          onChange={(e) =>
-                            handleQuantityChange(
-                              item.id,
-                              parseInt(e.target.value)
-                            )
-                          }
-                        >
-                          <option value={1}>01</option>
-                          <option value={2}>02</option>
-                          <option value={3}>03</option>
-                        </select>
+                        
                       </div>
                       <p className="text-xs leading-3 text-gray-600 pt-2 text-wrap w-[30vw]">
                         {item.ProductDescriptions}
@@ -222,16 +200,6 @@ function CheckOut() {
                           <button className="text-xs leading-3 underline text-gray-800 cursor-pointer">
                             Add to favorites
                           </button>
-                          {/* <button
-                            onClick={() =>
-                              dispatch(
-                                removeFromCart({ productId: item.productId })
-                              )
-                            }
-                            className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
-                          >
-                            Remove
-                          </button> */}
                           <button
                             onClick={() => removeFromCart(item.ProductId)}
                             className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
@@ -240,6 +208,7 @@ function CheckOut() {
                           </button>
                         </div>
                         <p className="text-base font-black leading-none text-gray-800">
+                          Price
                           ₹ {item.ProductPrice}
                         </p>
                       </div>
