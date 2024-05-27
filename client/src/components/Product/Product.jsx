@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
+// const APIUrl = "http://localhost:8000/api/v1";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -55,26 +56,6 @@ const Product = () => {
     setProducts(women);
   }
 
-  // const productProperties = products.map((product, index) => {
-  //   const {
-  //     _id,
-  //     ProductId,
-  //     ProductName,
-  //     ProductDescriptions,
-  //     ProductPrice,
-  //     ProductImage,
-  //   } = product;
-
-  //   return {
-  //     productId: ProductId,
-  //     productName: ProductName,
-  //     productDes: ProductDescriptions,
-  //     productP:
-  //       ProductPrice.ProductPrice - (20 * ProductPrice.ProductPrice) / 100,
-  //     productImg: ProductImage,
-  //   };
-  // });
-
   const UserId = localStorage.getItem("UserId");
 
   const addToCart = async (e) => {
@@ -98,204 +79,12 @@ const Product = () => {
     }
   };
 
-  // console.log(products);
-
-  // const handle99_499 = (ProductPrice) => {
-  //   if (ProductPrice >= 99 && ProductPrice <= 499) {
-  //   }
-  // };
-
-  // const handle499_999 = (ProductPrice) => {
-  //   if (ProductPrice >= 499 && ProductPrice <= 999) {
-  //   }
-  // };
-
-  // const handle999_2999 = (ProductPrice) => {
-  //   if (ProductPrice >= 999 && ProductPrice <= 2999) {
-  //   }
-  // };
-
-  // const handle2999_4999 = (ProductPrice) => {
-  //   if (ProductPrice >= 2999 && ProductPrice <= 4999) {
-  //   }
-  // };
-
-  // const handle5000 = (ProductPrice) => {
-  //   if (ProductPrice >= 5000) {
-  //   }
-  // };
-
-  // const calculateDiscountedPrice = (productPrice, discountPercentage) => {
-  //   return (productPrice - discountPercentage * productPrice).toFixed(1);
-  // };
-
-  // const handleDiscount = (e, value) => {
-  //   const filteredProducts = products.filter((product) => {
-  //     // if(product.)
-  //   });
-  //   setProducts(filteredProducts);
-  // };
+  console.log(products);
 
   return (
     <>
       <ToastContainer />
       <div className="w-full h-[93.2vh] flex items-center justify-between">
-        {/* filter and sorting start */}
-        {/* <div className="bg-gray-50 h-full w-[20%] border"> */}
-        {/* filter and sort */}
-        {/* <div className="flex items-center justify-between px-10 py-5 border-b">
-            <button className="flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                className="w-[15px] h-[15px] mr-2"
-              >
-                <path
-                  fill="#353536"
-                  d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"
-                />
-              </svg>
-              Filter Product
-            </button>
-            <select className="flex items-center justify-center border p-1 ">
-              <option> Sort </option>
-              <option> Relevance </option>
-              <option> Most Bought </option>
-              <option> Brands </option>
-              <option> LEVI'S </option>
-              <option> GLORISA </option>
-              <option> Raymond </option>
-              <option> METRONAUT </option>
-              <option> Houseofchic </option>
-              <option> FUBAR </option>
-              <option> STONEBERG </option>
-            </select>
-          </div>
-          sorting by price 
-          <div className="py-6 px-8">
-            <p className="text-lg font-semibold tracking-wide">PRICE</p>
-            <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input
-                type="radio"
-                name=""
-                id=""
-                className="mr-3"
-                onClick={handle99_499}
-              />
-              <label htmlFor="99-499">₹ 99 - ₹ 499</label>
-            </div>
-            <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input
-                type="radio"
-                name=""
-                id=""
-                className="mr-3"
-                onClick={handle499_999}
-              />
-              <label htmlFor="99-499">₹ 499 - ₹ 999</label>
-            </div>
-            <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input
-                type="radio"
-                name=""
-                id=""
-                className="mr-3"
-                onClick={handle999_2999}
-              />
-              <label htmlFor="99-499">₹ 999 - ₹ 2999</label>
-            </div>
-            <div className="flex items-center justify-start mt-3 w-[48%]">
-              <input
-                type="radio"
-                name=""
-                id=""
-                className="mr-3"
-                onClick={handle2999_4999}
-              />
-              <label htmlFor="99-499">₹ 2999 - ₹ 4999</label>
-            </div>
-            <div className="flex items-center justify-start mt-3 w-[45%]">
-              <input
-                type="radio"
-                name=""
-                id=""
-                className="mr-3"
-                onClick={handle5000}
-              />
-              <label htmlFor="99-499">₹ 5000 +</label>
-            </div>
-          </div>
-
-          sorting by DISCOUNT 
-          <div className="py-6 px-8">
-            <p className="text-lg font-semibold tracking-wide">DISCOUNT</p>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-                onChange={(e) => handleDiscount(e.target.checked, 0.2)}
-              />
-              <p>20% or more</p>
-            </div>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-                onChange={(e) => handleDiscount(e.target.checked, 0.3)}
-              />
-              <p>30% or more</p>
-            </div>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-                onChange={(e) => handleDiscount(e.target.checked, 0.4)}
-              />
-              <p>40% or more</p>
-            </div>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-                onChange={(e) => handleDiscount(e.target.checked, 0.5)}
-              />
-              <p>50% or more</p>
-            </div>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-                onChange={(e) => handleDiscount(e.target.checked, 0.6)}
-              />
-              <p>60% or more</p>
-            </div>
-            <div className="mt-2 flex items-center justify-start">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="mr-2 text-gray-500"
-              />
-              <p>70% or more</p>
-            </div>
-          </div>
-          <div className="flex items-center justify-center mt-7">
-            <button className="bg-red-700 w-[80%] text-lg font-semibold text-white tracking-wide rounded py-2">
-              Reset Filter
-            </button>
-          </div>
-        </div> */}
-
         {/* all products start */}
         <div className="bg-gray-50 h-[93.2vh] overflow-scroll w-full">
           <div className="py-5 sm:py-10 md:py-16 px-2 sm:px-5 md:px-10">
@@ -339,7 +128,6 @@ const Product = () => {
                   Women Collections
                 </button>
               </div>
-              {/* <a to="#">See All</a> */}
             </div>
 
             <div className="grid lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 justify-center">
@@ -385,70 +173,21 @@ const Product = () => {
                       <div className="flex items-center justify-center">
                         <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                           <span className="ml-1 line-through text-gray-600 font-semibold text-xs mt-1">
-                            ₹ {products.ProductPrice}
+                            ₹ {e.ProductPrice}
                           </span>
                         </span>
 
                         <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                           <span className="ml-1 text-lg">
                             ₹
-                            {products.ProductPrice -
-                              (20 * products.ProductPrice) / 100}
+                            {e.ProductPrice -
+                              (20 * e.ProductPrice) / 100}
                             <span className="text-green-700 font-semibold text-xs">
                               (20% Off)
                             </span>
                           </span>
                         </span>
                       </div>
-
-                      {/* <div className="flex items-center justify-center">
-                        <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                          <span className="ml-1 line-through text-gray-600 font-semibold text-[9px] mt-1">
-                            ₹ {e.ProductPrice}
-                          </span>
-                        </span>
-
-                        <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                          <span className="ml-1 font-semibold text-[12px]">
-                            ₹{e.ProductPrice - (30 * e.ProductPrice) / 100}
-                            {e.ProductPrice >= 1 &&
-                              e.ProductPrice < 499 &&
-                              `₹ ${calculateDiscountedPrice(
-                                e.ProductPrice,
-                                0.2
-                              )} (20% Off)`}
-                            {e.ProductPrice >= 499 &&
-                              e.ProductPrice < 999 &&
-                              `₹ ${calculateDiscountedPrice(
-                                e.ProductPrice,
-                                0.3
-                              )} (30% Off)`}
-                            {e.ProductPrice >= 999 &&
-                              e.ProductPrice <= 1999 &&
-                              `₹ ${calculateDiscountedPrice(
-                                e.ProductPrice,
-                                0.35
-                              )} (35% Off)`}
-                            {e.ProductPrice >= 2000 &&
-                              e.ProductPrice <= 3999 &&
-                              `₹ ${calculateDiscountedPrice(
-                                e.ProductPrice,
-                                0.55
-                              )} (55% Off)`}
-                            {e.ProductPrice >= 4000 &&
-                              e.ProductPrice <= 6999 &&
-                              `₹ ${calculateDiscountedPrice(
-                                e.ProductPrice,
-                                0.4
-                              )} (40% Off)`}
-                            {e.ProductPrice > 6999 &&
-                              `₹ ${calculateDiscountedPrice(
-                                e.ProductPrice,
-                                0.6
-                              )} (60% Off)`}
-                          </span>
-                        </span>
-                      </div> */}
                     </div>
                   </div>
                 </div>
