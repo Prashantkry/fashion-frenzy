@@ -384,12 +384,31 @@ const Product = () => {
 
                       <div className="flex items-center justify-center">
                         <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                          <span className="ml-1 line-through text-gray-600 font-semibold text-xs mt-1">
+                            ₹ {products.ProductPrice}
+                          </span>
+                        </span>
+
+                        <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                          <span className="ml-1 text-lg">
+                            ₹
+                            {products.ProductPrice -
+                              (20 * products.ProductPrice) / 100}
+                            <span className="text-green-700 font-semibold text-xs">
+                              (20% Off)
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      {/* <div className="flex items-center justify-center">
+                        <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                           <span className="ml-1 line-through text-gray-600 font-semibold text-[9px] mt-1">
                             ₹ {e.ProductPrice}
                           </span>
                         </span>
 
-                        {/* <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                        <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                           <span className="ml-1 font-semibold text-[12px]">
                             ₹{e.ProductPrice - (30 * e.ProductPrice) / 100}
                             {e.ProductPrice >= 1 &&
@@ -428,8 +447,8 @@ const Product = () => {
                                 0.6
                               )} (60% Off)`}
                           </span>
-                        </span> */}
-                      </div>
+                        </span>
+                      </div> */}
                     </div>
                   </div>
                 </div>
