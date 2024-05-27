@@ -46,7 +46,7 @@ const Men = () => {
     <>
       <ToastContainer />
       <div className="w-full pt-6">
-        <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+        <div className="p-5 mx-12">
           <div className="border-b mb-5 flex justify-between text-sm">
             <div className="text-indigo-600 flex items-center pb-2 pr-2 border-b-0 border-indigo-600 uppercase">
               <button
@@ -59,11 +59,11 @@ const Men = () => {
             <Link href="#">See All</Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-            {productsData.slice(0, 3).map((product, id) => (
+          <div className="grid xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {productsData.slice(0, 4).map((product, id) => (
               <div
                 key={id}
-                className="rounded overflow-hidden shadow-lg flex flex-col w-[330px] h-[500px] bg-gray-300"
+                className="w-auto rounded overflow-hidden shadow-lg flex flex-col h-[530px] bg-gray-300"
               >
                 <div className="relative">
                   <Link to="/productDetails">
@@ -79,10 +79,10 @@ const Men = () => {
                     </div>
                   </Link>
                 </div>
-                <div className="px-6 py-4 mb-auto">
+                <div className="px-6 mb-auto">
                   <Link
                     to="/"
-                    className="font-medium text-sm h-[2vh] inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 overflow-scroll no-scrollbar"
+                    className="font-medium text-sm h-[2vh] hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 overflow-scroll no-scrollbar"
                   >
                     {product.ProductName}
                   </Link>
@@ -90,7 +90,7 @@ const Men = () => {
                     {product.ProductDescriptions.slice(0, 105)}
                   </p>
                 </div>
-                <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+                <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100 text-nowrap">
                   <button
                     onClick={() => addToCart(product)}
                     className=" text-gray-800 border border-gray-900 p-1 text-sm px-2 rounded font-semibold -mt-1 -ml-3"

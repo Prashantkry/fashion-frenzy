@@ -32,19 +32,15 @@ const UserProfile = () => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const handleSubmit = () => {
-    // Add logic to submit updated user data
-  };
-
   const handleCopyUserId = () => {
     navigator.clipboard.writeText(userData.UserId);
     alert("UserId copied to clipboard");
   };
 
   return (
-    <div className="w-full h-[90vh] flex items-center justify-center p-2">
-      <div className="container flex flex-col w-[40vw] h-[85vh] p-7 items-start justify-start border-2 shadow-lg">
-        <div className="w-full rounded flex items-center justify-start pl-10 border-0">
+    <div className="w-full flex items-center justify-center p-2 mb-10">
+      <div className="container grid xl:w-[40vw] lg:w-[50vw] md:w-[75vw] sm:w-[80vw] h-[85vh] p-7 items-center border-2 shadow">
+        <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 items-center pl-10 border-0">
           {userData.Pic ? (
             <img
               src={userData.Pic}
@@ -102,8 +98,8 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="leading-10 ml-10 mt-3">
-          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[31vw] text-[15px]">
+        <div className="leading-10 mt-3 mb-10">
+          <p className="text-gray-800 tracking-widest font-serif border-2 rounded p-1 flex items-start mt-3 w-auto text-[15px]">
             Email:
             {editMode ? (
               <input
@@ -117,11 +113,11 @@ const UserProfile = () => {
               userData.Email
             )}
           </p>
-          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[31vw] text-[15px]">
+          <p className="text-gray-800 tracking-widest font-serif border-2 rounded p-1 flex items-start mt-3 w-auto text-[15px]">
             Phone:
             {editMode ? (
               <input
-                className="w-[80%] px-1 border overflow-scroll"
+                className="w-[100%] px-1 border overflow-scroll"
                 type="tel"
                 name="Phone"
                 value={userData.Phone}
@@ -131,7 +127,7 @@ const UserProfile = () => {
               userData.Phone
             )}
           </p>
-          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[31vw] text-[15px]">
+          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex-row items-start justify-between mt-3 text-[15px]">
             Address:
             {editMode ? (
               <textarea
@@ -145,7 +141,7 @@ const UserProfile = () => {
               userData.Address
             )}
           </p>
-          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[31vw] text-[15px]">
+          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 text-[15px]">
             PinCode:
             {editMode ? (
               <input
@@ -160,7 +156,7 @@ const UserProfile = () => {
             )}
           </p>
           {/* payment details */}
-          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[31vw] text-[15px]">
+          <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 text-[15px]">
             Card:
             {editMode ? (
               <input
@@ -175,7 +171,7 @@ const UserProfile = () => {
             )}
           </p>
           <div className="flex items-center justify-between">
-            <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[15vw] text-[15px]">
+            <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 text-[15px]">
               Expiry:
               {editMode ? (
                 <input
@@ -189,7 +185,7 @@ const UserProfile = () => {
                 userData.expiry
               )}
             </p>
-            <p className="text-gray-800 tracking-widest font-serif  border-2 rounded p-1 flex items-start justify-between mt-3 w-[15vw] text-[15px]">
+            <p className="text-gray-800 tracking-widest font-serif border-2 rounded p-1 flex items-start justify-between mt-3 text-[15px]">
               CVV:
               {editMode ? (
                 <input
@@ -204,11 +200,10 @@ const UserProfile = () => {
               )}
             </p>
           </div>
-
           <button
             className={`${
               editMode ? "bg-red-500" : "bg-green-800"
-            } w-[7vw] font-semibold text-white tracking-widest font-sans mt-4 rounded`}
+            } w-[20vw] font-semibold text-white tracking-widest font-sans mt-4 rounded`}
             onClick={handleEdit}
           >
             {editMode ? "Save" : "Edit"}

@@ -5,6 +5,7 @@ import { bc6 } from "../../components/Images";
 
 const userProfile = () => {
   const [userdata, setUserData] = useState("");
+
   useEffect(() => {
     const userId = localStorage.getItem("UserId");
     // console.log(userId);
@@ -24,7 +25,8 @@ const userProfile = () => {
         // console.log(res);
         setUserData(res.data);
       });
-  });
+  }, []);
+
   return (
     <>
       <div>
@@ -61,8 +63,12 @@ const userProfile = () => {
               </p>
             </div>
             <div className="w-[300px] flex items-center justify-around rounded ml-4 mt-5">
-              <button className="bg-red-900 p-1 w-[100px] h-[50px] rounded">Delete</button>
-              <button className="bg-green-800 p-1 w-[100px] h-[50px] rounded">Update</button>
+              <button className="bg-red-900 p-1 w-[100px] h-[50px] rounded">
+                Delete
+              </button>
+              <button className="bg-green-800 p-1 w-[100px] h-[50px] rounded">
+                Update
+              </button>
             </div>
           </div>
         </div>

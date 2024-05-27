@@ -1,30 +1,52 @@
 import React, { useEffect, useState } from "react";
 const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 import { bc6 } from "../../components/Images";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { useParams } from "react-router-dom";  get data from url
 
-const userProfile = () => {
+const UserProfile = () => {
   const [userdata, setUserData] = useState("");
-  useEffect(() => {
-    const userId = localStorage.getItem("UserId");
-    // console.log(userId);
-    fetch(`${APIUrl}/getAdmin`, {
-      method: "POST", // Corrected method to "POST"
-      headers: {
-        "Content-Type": "application/json", // Added content type header
-      },
-      body: JSON.stringify({
-        userId,
-      }),
-    })
-      .then((data) => {
-        return data.json();
-      })
-      .then((res) => {
-        // console.log(res);
-        setUserData(res.data);
+  // useEffect(() => {
+  //   const userId = localStorage.getItem("UserId");
+  //   // console.log(userId);
+  //   fetch(`${APIUrl}/getAdmin`, {
+  //     method: "POST", // Corrected method to "POST"
+  //     headers: {
+  //       "Content-Type": "application/json", // Added content type header
+  //     },
+  //     body: JSON.stringify({
+  //       userId,
+  //     }),
+  //   })
+  //     .then((data) => {
+  //       return data.json();
+  //     })
+  //     .then((res) => {
+  //       // console.log(res);
+  //       setUserData(res.data);
+  //     });
+  // });
+
+  // making profile private route
+  const getUser = async () => {
+    try {
+      const response = await axios("https://fashion-frenzy.onrender.com/signIn", {
+        withCredentials: true,
       });
-  });
+      console.log(response);
+    } catch (err) {
+      useNavigate("/signIn");
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  // end of private routing
+
   return (
     <>
       <div>
@@ -61,8 +83,12 @@ const userProfile = () => {
               </p>
             </div>
             <div className="w-[300px] flex items-center justify-around rounded ml-4 mt-5">
-              <button className="bg-red-900 p-1 w-[100px] h-[50px] rounded">Delete</button>
-              <button className="bg-green-800 p-1 w-[100px] h-[50px] rounded">Update</button>
+              <button className="bg-red-900 p-1 w-[100px] h-[50px] rounded">
+                Delete
+              </button>
+              <button className="bg-green-800 p-1 w-[100px] h-[50px] rounded">
+                Update
+              </button>
             </div>
           </div>
         </div>
@@ -71,4 +97,4 @@ const userProfile = () => {
   );
 };
 
-export default userProfile;
+export default UserProfile;
