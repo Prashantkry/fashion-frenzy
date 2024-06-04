@@ -131,7 +131,7 @@ export default function Navbar() {
                       } lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                     }
                   >
-                    ProfileU
+                    Profile
                   </NavLink>
                 </li>
               )}
