@@ -106,14 +106,16 @@ export default function Navbar() {
             <ul className="  flex flex-col px-6 mx-auto font-semibold font-heading space-x-12 gap-5 justify-start w-full">
               <li className='!m-0'><NavLink to={"/"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Home</NavLink></li>
               <li className='!m-0'><NavLink to={"/product"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Shop</NavLink></li>
-              <li className='!m-0'>
-                <NavLink
-                  to={isLoggedIn ? (role ? "/adminDashboard" : "/user") : "/signIn"}
-                  className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}
-                >
-                  Profile
-                </NavLink>
-              </li>
+              {isLoggedIn && (
+                <li className='!m-0'>
+                  <NavLink
+                    to={role ? "/adminDashboard" : "/user"}
+                    className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+              )}
               <li className='!m-0'><NavLink to={"/features"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Features</NavLink></li>
               <li className='!m-0'><NavLink to={"/contact"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Contact Us</NavLink></li>
               {isLoggedIn ? (
