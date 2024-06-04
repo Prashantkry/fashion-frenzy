@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
+// const APIUrl = "http://localhost:8000/api/v1";
 const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
 export default function SignIn() {
@@ -50,45 +51,9 @@ export default function SignIn() {
     }
   };
 
-  // google signIn
-  async function googleLogin() {
-    try {
-      const response = await fetch(
-        "https://fashion-frenzy.onrender.com/auth/google",
-        // { mode: "no-cors" },
-        {
-          method: "get",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: 'include',
-        }
-      );
-      const data = await response.json();
-      console.log(data);
-      window.location.href = data.url;
-    } catch (error) {
-      console.error("Error logging in with Google:", error);
-    }
-  }
-
-
-  // google signIn
+  // // google signIn
   // async function googleLogin() {
-  //   try {
-  //     const response = await axios.get("https://fashion-frenzy.onrender.com/auth/google", {
-  //       method: "get",
-  //       headers: {
-  //         "Content-Type": "text/plain",
-  //       },
-  //       withCredentials: true, // Send cookies along with the request
-  //     });
-  //     const data = response.data;
-  //     console.log(data);
-  //     window.location.href = data.url;
-  //   } catch (error) {
-  //     console.error("Error logging in with Google:", error);
-  //   }
+  //   window.open("http://localhost:8000/auth/google/callback", "_self");
   // }
 
   const [showpass, setShowPass] = useState(false);
@@ -118,7 +83,7 @@ export default function SignIn() {
               </Link>
             </p>
             {/* google login start */}
-            <button
+            {/* <button
               aria-label="Continue with google"
               role="button"
               className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100 hover:text-gray-800 text-gray-900"
@@ -149,7 +114,7 @@ export default function SignIn() {
                 />
               </svg>
               <p className="text-base font-medium ml-4">Continue with Google</p>
-            </button>
+            </button> */}
             {/* google login end */}
 
             <div className="w-full flex items-center justify-between py-5">

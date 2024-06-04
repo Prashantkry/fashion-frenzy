@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import './SignUp.css'
 
+// const APIUrl = "http://localhost:8000/api/v1";
 const APIUrl = "https://fashion-frenzy.onrender.com/api/v1";
 
 export default function SignUp() {
@@ -75,9 +77,9 @@ export default function SignUp() {
   return (
     <>
       <ToastContainer />
-      <div className="bg-gray-50 flex items-center justify-around h-fit border-0 px-40 py-[3vh] signUp">
-        <div className="w-[60vw] md:flex items-center justify-center border-0">
-          <div className="bg-gray-100 w-[80%] h-full shadow-lg rounded lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+      <div className="bg-gray-200 h-[92vh] flex items-center justify-around border-0">
+        <div className="w-[60vw] mainDivSignUp2 md:flex items-center justify-center border-0">
+          <div className="bg-gray-100 w-[80%] mainDivSignUp h-full shadow-lg rounded p-10">
             <p
               tabIndex={0}
               className="focus:outline-none tracking-widest text-2xl font-bold leading-6 text-gray-900"
@@ -102,7 +104,7 @@ export default function SignUp() {
                 <div className="mt-2">
                   <label
                     htmlFor="Name"
-                    className="text-sm font-medium leading-none text-gray-900"
+                    className="text-sm font-medium leading-none text-gray-800"
                   >
                     Name
                   </label>
@@ -110,14 +112,14 @@ export default function SignUp() {
                     id="Name"
                     aria-labelledby="Name"
                     type="text"
-                    className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-900 py-3 w-full pl-3 mt-2"
+                    className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-800 py-3 w-full pl-3 mt-2"
                     placeholder="your name"
                   />
                 </div>
                 <div className="mt-4">
                   <label
                     htmlFor="email"
-                    className="text-sm font-medium leading-none text-gray-900"
+                    className="text-sm font-medium leading-none text-gray-800"
                   >
                     Email
                   </label>
@@ -125,14 +127,14 @@ export default function SignUp() {
                     id="email"
                     aria-labelledby="email"
                     type="email"
-                    className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-900 py-3 w-full pl-3 mt-2"
+                    className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-800 py-3 w-full pl-3 mt-2"
                     placeholder="e.g: abc@gmail.com "
                   />
                 </div>
                 <div className="mt-4 w-full">
                   <label
                     htmlFor="pass"
-                    className="text-sm font-medium leading-none text-gray-900"
+                    className="text-sm font-medium leading-none text-gray-800"
                   >
                     Password
                   </label>
@@ -140,7 +142,7 @@ export default function SignUp() {
                     <input
                       id="pass"
                       type={showpass ? "text" : "password"}
-                      className="bg-transparent border rounded text-xs font-medium leading-none text-gray-900 py-4 w-full pl-3 mt-2"
+                      className="bg-transparent border rounded text-xs font-medium leading-none text-gray-800 py-4 w-full pl-3 mt-2"
                       placeholder="unique password must be 8 digit"
                     />
                     <div
@@ -185,8 +187,8 @@ export default function SignUp() {
                 </div>
               </div>
               {/* profile img */}
-              <div className="border-0 flex flex-col items-center justify-center w-[38vw] m-4 mb-0 mr-0 mt-6 pb-4 py-8 lg:h-[34vh]">
-                <div className="border border-gray-300 w-full flex items-center justify-center p-3 rounded-md lg:h-[90%]">
+              <div className="border-0 flex flex-col items-center justify-center w-[38vw] m-4 mb-0 mr-0 mt-6 pb-4 py-8 profileSignUpImg lg:h-[34vh]">
+                <div className="border border-gray-300 w-full flex items-center justify-center p-3 rounded-md h-[90%]">
                   {!selectedImage && (
                     <>
                       <label htmlFor="filePicker" className="cursor-pointer">
@@ -228,7 +230,7 @@ export default function SignUp() {
             <div className="-mt-4">
               <label
                 htmlFor="number"
-                className="text-sm font-medium leading-none text-gray-900"
+                className="text-sm font-medium leading-none text-gray-800"
               >
                 Phone Number
               </label>
@@ -236,51 +238,21 @@ export default function SignUp() {
                 id="number"
                 aria-labelledby="number"
                 type="number"
-                className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-900 py-3 w-full pl-3 mt-2"
+                className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-800 py-3 w-full pl-3 mt-2"
                 placeholder="your phone number"
               />
             </div>
             <div className="mt-4">
-              <label
-                htmlFor="number"
-                className="text-sm font-medium leading-none text-gray-900"
-              >
-                Address
-              </label>
-              <input
-                id="Address"
-                aria-labelledby="Address"
-                type="text"
-                className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-900 py-3 w-full pl-3 mt-2"
-                placeholder="your Address"
-              />
-            </div>
-            <div className="mt-4">
-              <label
-                htmlFor="number"
-                className="text-sm font-medium leading-none text-gray-900"
-              >
-                Pin Code
-              </label>
-              <input
-                id="pin"
-                aria-labelledby="pin"
-                type="number"
-                className="bg-transparent border rounded text-xs font-medium leading-none placeholder-gray-400 text-gray-900 py-3 w-full pl-3 mt-2"
-                placeholder="your Pin Code"
-              />
-            </div>
-            <div className="mt-4">
               <input type="checkbox" name="TC" id="TC" className="" />
-              <span className="ml-2 -mt-2 text-xs text-gray-900">
-                I agree to Fashion Frenzy Terms of Services
+              <span className="ml-2 -mt-2 text-xs text-gray-800">
+                I agree to Vrika AI Terms of Services
               </span>
               <br />
             </div>
             <div className="mt-8">
               <button
                 role="button"
-                className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full"
+                className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border-0 rounded hover:bg-indigo-600 py-4 w-full"
                 onClick={sendSignUpData}
               >
                 {/* <Link to="/signIn">Create my account</Link> */}

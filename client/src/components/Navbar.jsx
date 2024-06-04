@@ -50,19 +50,22 @@ export default function Navbar() {
             <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
               <li><NavLink to={"/"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Home</NavLink></li>
               <li><NavLink to={"/product"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Shop</NavLink></li>
-              <NavLink
-                to={isLoggedIn ? (role ? "/adminDashboard" : "/user") : "/signIn"}
-                className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}
-              >
-                Profile
-              </NavLink>
-
+              {isLoggedIn && (
+                <li>
+                  <NavLink
+                    to={role ? "/adminDashboard" : "/user"}
+                    className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+              )}
               <li><NavLink to={"/features"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Features</NavLink></li>
               <li><NavLink to={"/contact"} className={({ isActive, isPending }) => isPending ? "" : isActive ? "border-b-2 border-blue-600" : ""}>Contact Us</NavLink></li>
               <li>
                 {isLoggedIn ? (
                   <button
-                    className="text-gray-800 hover:text-blue-600 focus:ring-4 focus:ring-gray-400 font-medium rounded-lg text-sm  border-0 mr-2 focus:outline-none"
+                    className="text-gray-800 hover:text-blue-600 font-medium rounded-lg text-sm  border-0 mr-2 focus:outline-none"
                     onClick={handleSignOut}
                   >
                     Sign Out
